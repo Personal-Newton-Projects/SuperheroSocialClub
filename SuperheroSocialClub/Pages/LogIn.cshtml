@@ -1,6 +1,19 @@
 ﻿@page
-@model SuperheroSocialClub.Pages.LogInModel
+@model SuperheroSocialClub.Pages.LoggingModel
 @{
 }
 
 
+<h3>Sign In</h3>
+
+<form method="post" asp-page="Logging">
+  <div class="form-group">
+    <label for="username">User Name</label>
+    <input type="text" class="form-control" id="username" asp-for="@Model.Username" placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" asp-for="@Model.Password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
