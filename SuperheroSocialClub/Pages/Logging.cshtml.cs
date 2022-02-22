@@ -5,20 +5,39 @@ namespace SuperheroSocialClub.Pages
 {
     public class LoggingModel : PageModel
     {
+        public string Message { get; set; }
 
         [BindProperty]
         public string Username { get; set; }
         [BindProperty]
         public string Password { get; set; }
-        public void OnGet(string username, string password)
+
+        public void OnGet(string message)
         {
-            Username = username;
-            Password = password;
+            Message = message;
         }
-        public void OnPost(string username, string password)
+        public IActionResult OnPost(string username, string password)
         {
-            Username = username;
-            Password = password;
+
+            User attemptLogin = UserManager.Users.Where(u => u.Name.ToLower() == username.ToLower()).FirstOrDefault();
+            if (attemptLogin != null)
+            {
+                if (attemptLogin.Password.ToLower() == password.ToLower())
+                {
+                    Username = username;
+                    Password = password;
+                    return RedirectToPage("/Index", "Welcome", new { Username = username.ToString() });
+                }
+                else
+                {
+                    return RedirectToPage("/LogIn", new { Message = "Invalid Password" });
+                }
+            }
+            else
+            {
+                return RedirectToPage("/LogIn", new { Message = "Account does not exist" });
+
+            }
         }
     }
 }

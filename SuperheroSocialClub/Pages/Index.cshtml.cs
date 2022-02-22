@@ -7,6 +7,8 @@ namespace SuperheroSocialClub.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public string Username { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -15,6 +17,11 @@ namespace SuperheroSocialClub.Pages
         public void OnGet()
         {
 
+        }
+
+        public void OnGetWelcome(string username)
+        {
+            Username = username;
         }
     }
 }

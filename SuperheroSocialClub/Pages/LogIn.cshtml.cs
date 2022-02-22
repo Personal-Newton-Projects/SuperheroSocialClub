@@ -5,7 +5,7 @@ namespace SuperheroSocialClub.Pages
 {
     public class LogInModel : PageModel
     {
-        public void OnGet()
+        public void OnGet(string message)
         {
         }
     }
