@@ -1,26 +1,27 @@
 ﻿using SuperheroSocialClub.Models;
+using System.Collections.Generic;
 
 namespace SuperheroSocialClub.Data
 {
     public static class SuperheroManager
     {
-        public static List<Superhero> SuperHeroes { get; set; } = GetHeroes();
 
-
-        static List<Superhero> GetHeroes()
+        public static List<Superhero> Superheroes { get; set; } = GenerateBaseEntries();
+        static List<Superhero> GenerateBaseEntries()
         {
-            SuperHeroes = new List<Superhero>
+            return new List<Superhero>
             {
                 new Superhero()
                 {
+                    Id = 1,
                     Name = "Bengtson",
                     RealName = "Bengt Larson",
-                    Region =
+                    Region = new Region()
                     {
                         City = "Gotham",
                         Country = "USA"
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "Super Eating",
                         "Super Walking"
@@ -28,24 +29,26 @@ namespace SuperheroSocialClub.Data
                 },
                 new Superhero()
                 {
+                    Id = 2,
                     Name = "Nestle Rabbit",
-                    Region =
+                    Region = new Region()
                     {
-                        City = "Everywhere to be seen"
+                        City = "Everywhere to be seen",
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "Creating Cereal"
                     }
                 },
                 new Superhero()
                 {
+                    Id = 3,
                     Name = "Mantis Man",
-                    Region =
+                    Region = new Region()
                     {
                         Country = "USA"
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "Looks like a Praying Mantis",
                         "Acts like a Praying Mantis",
@@ -54,13 +57,14 @@ namespace SuperheroSocialClub.Data
                 },
                 new Superhero()
                 {
+                    Id = 4,
                     RealName = "Ronald McDonald",
-                    Region =
+                    Region = new Region()
                     {
                         City = "Every corner of every street block",
                         Country = "USA"
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "Scare children",
                         "Walking statue / hardened skin"
@@ -68,28 +72,29 @@ namespace SuperheroSocialClub.Data
                 },
                 new Superhero()
                 {
+                    Id = 5,
                     Name = "Control Freak",
                     RealName = "Nobody knows",
-                    Region =
+                    Region = new Region()
                     {
                         City = "Nobody knows",
-                        Country = null,
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "???"
                     }
                 },
                 new Superhero()
                 {
+                    Id = 6,
                     Name = "Frog Man",
                     RealName = "Albert Harrot",
-                    Region =
+                    Region = new Region()
                     {
                         City = "New York",
                         Country = "USA"
                     },
-                    Superpowers =
+                    Superpowers = new List<string>
                     {
                         "Sticks to walls",
                         "Sticky",
@@ -97,16 +102,9 @@ namespace SuperheroSocialClub.Data
                         "Long Jump"
                     }
 
-                }
+                },
             };
-
-            return SuperHeroes;
         }
-
-        public static int GetId(Superhero superhero)
-        {
-            return SuperHeroes.IndexOf(superhero);
-        }
-
     }
+
 }
