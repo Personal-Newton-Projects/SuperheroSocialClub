@@ -4,20 +4,69 @@
 }
 
 <div class="row">
-    @foreach (var hero in Model.SuperHeroes)
+    @foreach (var hero in Model.Superheroes)
+
     {
         <div class="col-md-4 pt-3 d-flex align-item-stretch">
-            <div class="card border-0" style="width: 18rem;">
-                <a asp-page="/Details" asp-route-id="@hero.Name">
-                    <img class="card-img-top pt-3" src="/Heroes/@{SuperheroManager.GetId(hero);}.jpg" alt="Card image cap">
-                </a>
-                <div class="card-body">
-                    <a asp-page="/Details" asp-route-id="@{SuperheroManager.GetId(hero);}">
-                        <h6 class="card-title">@hero.Name</h6>
-                    </a>
-                    <p class="card-text">@hero.RealName</p>
-                    <hr />
-                    <h8 class="card-subtitle mb-2 text-info">@hero.Region.City</h8>
+            <div class="card" style="width: 18rem;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                            <img class="img-responsive" style="height:auto;width:100%;" src="Heroes/@{@hero.Id}.jpg" alt="Hero Image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                                @{
+                                    if (hero.Name == null)
+                                    {
+                                        <h4 class="card-title">@hero.RealName</h4>
+                                    }
+                                    else
+                                    {
+                                        <h4 class="card-title">@hero.Name</h4>
+                                    }
+                                }
+                            @{
+                                if (hero.Name != null)
+                                {
+                                    <h6 class="card-title">@hero.RealName</h6>
+                                }
+                            }
+                            <hr />
+                            @{
+                                if (hero.Superpowers.Count > 0)
+                                {
+                                    <p class="card-text">Superpowers</p>
+                                    <ul>
+                                        @foreach (string power in hero.Superpowers)
+                                        {
+                                            <li class="card-subtitle mb-2">@power</li>
+                                        }
+                                    </ul>
+                                    <hr />
+                                }
+
+                            }
+
+
+                            @{
+                                if (hero.Region.City != null)
+                                {
+                                    if (hero.Region.Country != null)
+                                    {
+                                        <h8 class="card-subtitle mb-2 text-muted">@hero.Region.City, @hero.Region.Country</h8>
+                                    }
+                                    else
+                                    {
+                                        <h8 class="card-subtitle mb-2 text-muted">@hero.Region.City</h8>
+                                    }
+                                }
+                                else if (hero.Region.Country != null)
+                                {
+                                    <h8 class="card-subtitle mb-2 text-muted">@hero.Region.Country</h8>
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
