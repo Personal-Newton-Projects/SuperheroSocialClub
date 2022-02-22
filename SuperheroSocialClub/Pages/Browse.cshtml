@@ -1,0 +1,25 @@
+﻿@page
+@model SuperheroSocialClub.Pages.BrowseModel
+@{
+}
+
+<div class="row">
+    @foreach (var hero in Model.SuperHeroes)
+    {
+        <div class="col-md-4 pt-3 d-flex align-item-stretch">
+            <div class="card border-0" style="width: 18rem;">
+                <a asp-page="/Details" asp-route-id="@hero.Name">
+                    <img class="card-img-top pt-3" src="/Heroes/@{SuperheroManager.GetId(hero);}.jpg" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <a asp-page="/Details" asp-route-id="@{SuperheroManager.GetId(hero);}">
+                        <h6 class="card-title">@hero.Name</h6>
+                    </a>
+                    <p class="card-text">@hero.RealName</p>
+                    <hr />
+                    <h8 class="card-subtitle mb-2 text-info">@hero.Region.City</h8>
+                </div>
+            </div>
+        </div>
+    }
+</div>
