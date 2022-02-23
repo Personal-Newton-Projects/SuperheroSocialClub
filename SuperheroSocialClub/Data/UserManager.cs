@@ -40,7 +40,11 @@ namespace SuperheroSocialClub.Data
                 {
                     Id = 5,
                     Name = "admin",
-                    Password = "admin"
+                    Password = "admin",
+                    Permissions = new List<int>
+                    {
+                        72
+                    }
                 },
                 new User()
                 {
