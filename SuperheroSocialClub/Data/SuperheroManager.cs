@@ -104,6 +104,12 @@ namespace SuperheroSocialClub.Data
 
                 },
             };
+
+        }
+        public static Superhero GetSuperheroFromUser(User User)
+        {
+            int index = UserManager.Users.IndexOf(User);
+            return Superheroes.Find(s => s.Id == (index+1));
         }
     }
 
