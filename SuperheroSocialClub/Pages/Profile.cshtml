@@ -4,37 +4,37 @@
 }
 
 <div class="row">
-        <div class="col-md-4 pt-3 d-flex align-item-stretch mx-auto">
-            <div class="card" style="width: 18rem;">
+        <div class="col-md-12 d-flex mx-auto">
+            <div class="card">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                            <img class="img-responsive" style="height:auto;width:100%;" src="Heroes/@{@Model.SuperHero.Id}.jpg" alt="Hero Image">
+                            <img class="img-responsive" style="height:auto;width:100%;" src="Heroes/@{@Model.Superhero.Id}.jpg" alt="Model.Hero.Image">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                                 @{
-                                    if (Model.SuperHero.Name == null)
+                                    if (Model.Superhero.Name == null)
                                     {
-                                        <h4 class="card-title">@Model.SuperHero.RealName</h4>
+                                        <h4 class="card-title">@Model.Superhero.RealName</h4>
                                     }
                                     else
                                     {
-                                        <h4 class="card-title">@Model.SuperHero.Name</h4>
+                                        <h4 class="card-title">@Model.Superhero.Name</h4>
                                     }
                                 }
                             @{
-                                if (Model.SuperHero.Name != null)
+                                if (Model.Superhero.Name != null)
                                 {
-                                    <h6 class="card-title">@Model.SuperHero.RealName</h6>
+                                    <h6 class="card-title">@Model.Superhero.RealName</h6>
                                 }
                             }
                             <hr />
                             @{
-                                if (Model.SuperHero.Superpowers.Count > 0)
+                                if (Model.Superhero.Superpowers.Count > 0)
                                 {
                                     <p class="card-text">Superpowers</p>
                                     <ul>
-                                        @foreach (string power in Model.SuperHero.Superpowers)
+                                        @foreach (string power in Model.Superhero.Superpowers)
                                         {
                                             <li class="card-subtitle mb-2">@power</li>
                                         }
@@ -46,27 +46,24 @@
 
 
                             @{
-                                if (Model.SuperHero.Region.City != null)
+                                if (Model.Superhero.Region.City != null)
                                 {
-                                    if (Model.SuperHero.Region.Country != null)
+                                    if (Model.Superhero.Region.Country != null)
                                     {
-                                        <h8 class="card-subtitle mb-2 text-muted">@Model.SuperHero.Region.City, @Model.SuperHero.Region.Country</h8>
+                                        <h8 class="card-subtitle mb-2 text-muted">@Model.Superhero.Region.City, @Model.Superhero.Region.Country</h8>
                                     }
                                     else
                                     {
-                                        <h8 class="card-subtitle mb-2 text-muted">@Model.SuperHero.Region.City</h8>
+                                        <h8 class="card-subtitle mb-2 text-muted">@Model.Superhero.Region.City</h8>
                                     }
                                 }
-                                else if (Model.SuperHero.Region.Country != null)
+                                else if (Model.Superhero.Region.Country != null)
                                 {
-                                    <h8 class="card-subtitle mb-2 text-muted">@Model.SuperHero.Region.Country</h8>
+                                    <h8 class="card-subtitle mb-2 text-muted">@Model.Superhero.Region.Country</h8>
                                 }
                             }
                         </div>
-                        <div>
-                            <button class="btn btn-primary" asp-page="Profile" asp-page-handler="Edit">Edit</button>
-                            <button class="btn btn-success" type="submit" asp-page="/Profile" asp-page-handler="Save">Save</button>
-                        </div>
+                        <a class="btn btn-primary" asp-page="Edit">Edit Profile</a>
                     </div>
                 </div>
             </div>

@@ -3,13 +3,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SuperheroSocialClub.Pages
 {
+    [BindProperties(SupportsGet = true)]
     public class ProfileModel : PageModel
     {
-        public Superhero SuperHero { get; set; }
+
+        public Superhero Superhero { get; set; }
+        public bool? EditMode { get; set; }
+
         public void OnGet()
         {
-
-            SuperHero = SuperheroManager.GetSuperheroFromUser(IndexModel.User);
+            if (IndexModel.User != null)
+            {
+                Superhero = SuperheroManager.GetSuperheroFromUser(IndexModel.User);
+            }
         }
     }
 }
