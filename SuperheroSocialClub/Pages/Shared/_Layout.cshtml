@@ -25,6 +25,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Browse">Browse</a>
                         </li>
+                        @{
+                            if(IndexModel.User != null || LoggingModel.CurrentUser != null)
+                            {
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Profile">
+                                <span>@IndexModel.User.Name</span><br />
+                                    <span>My Profile</span>
+                                    </a>
+                                </li>
+                            }
+
+                        }
+
                     </ul>
                 </div>
             </div>
