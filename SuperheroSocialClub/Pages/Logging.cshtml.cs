@@ -12,6 +12,8 @@ namespace SuperheroSocialClub.Pages
         [BindProperty]
         public string Password { get; set; }
 
+        public static User CurrentUser { get; set; }
+
         public void OnGet(string message)
         {
             Message = message;
@@ -24,9 +26,9 @@ namespace SuperheroSocialClub.Pages
             {
                 if (attemptLogin.Password.ToLower() == password.ToLower())
                 {
-                    Username = username;
-                    Password = password;
-                    return RedirectToPage("/Index", "Welcome", new { Username = username.ToString() });
+                    CurrentUser = attemptLogin;
+                    Response.Cookies.Append("User", $"{CurrentUser.Id}");
+                    return RedirectToPage("/Index", "Welcome");
                 }
                 else
                 {
