@@ -52,5 +52,12 @@ namespace SuperheroSocialClub.Data
 
             return users;
         }
+
+        public static User GetUserFromCookie(string cookie)
+        {
+            int value = int.Parse(cookie);
+            return Users.Find(u => u.Id == (value));
+        }
+
     }
 }
