@@ -108,8 +108,26 @@ namespace SuperheroSocialClub.Data
         }
         public static Superhero GetSuperheroFromUser(User User)
         {
-            int index = UserManager.Users.IndexOf(User);
-            return Superheroes.Find(s => s.Id == (index+1));
+            if(User != null)
+            {
+                int index = UserManager.Users.IndexOf(User);
+                return Superheroes.Find(s => s.Id == (index + 1));
+            }
+            return null;
+        }
+
+        public static int GetIndexofHero(Superhero hero)
+        {
+            if(hero != null)
+            {
+                return Superheroes.IndexOf(hero);
+            }
+            return 1;
+        }
+
+        public static Superhero GetSuperheroFromID(int id)
+        {
+            return Superheroes.First(s => s.Id == id);
         }
     }
 
