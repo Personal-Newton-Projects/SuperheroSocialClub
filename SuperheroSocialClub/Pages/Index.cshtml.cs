@@ -7,7 +7,7 @@ namespace SuperheroSocialClub.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public static User? User { get; set; }
+        public static new User? User { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -21,11 +21,6 @@ namespace SuperheroSocialClub.Pages
             {
                 User = UserManager.GetUserFromCookie(UserId);
             }
-        }
-
-        public void OnGetWelcome(string username)
-        {
-            User = LoggingModel.CurrentUser;
         }
     }
 }
