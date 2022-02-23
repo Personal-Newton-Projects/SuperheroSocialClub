@@ -26,7 +26,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Browse">Browse</a>
                         </li>
                         @{
-                            if(IndexModel.User != null || LoggingModel.CurrentUser != null)
+                            if(IndexModel.User != null && IndexModel.User.Permissions != null && IndexModel.User.Permissions.Contains(72))
+                            {
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Profile">
+                                    <span>Admin Page (WIP)</span>
+                                    </a>
+                                </li>
+                            }
+
+
+                            if(IndexModel.User != null)
                             {
                                 <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Profile">
