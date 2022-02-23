@@ -1,0 +1,35 @@
+﻿@page "/Profile/Edit"
+@model SuperheroSocialClub.Pages.EditModel
+@{
+}
+
+<div class="row">
+        <div class="col-md-2 mx-auto">
+            <div class="card" style="width: 18rem;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                            <img class="img-responsive" style="height:auto;width:100%;" src="Heroes/@{@SuperheroManager.GetSuperheroFromID(4)}.jpg" alt="Model.Hero.Image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <form method="post">
+                            <label for="Name">Name</label>
+                            <input class="form-control" type="text" asp-for="Name" id="Name" name="Name" value="@Model.Name" />
+                            <label for="RealName">RealName</label>
+                            <input class="form-control" type="text" asp-for="RealName" id="RealName" name="RealName" value="@Model.RealName" />
+                            <label for="City">City</label>
+                            <input class="form-control" type="text" asp-for="City" id="City" name="City" value="@Model.City" />
+                            <label for="Country">Country</label>
+                            <input class="form-control" type="text" asp-for="Country" id="Country" name="Country" value="@Model.Country" />
+                            <label for="Superpowers">Superpowers</label>
+                            <small class="card-subtitle">Seperate with ;</small>
+                            <textarea class="form-control" rows="5" cols="20" type="text" asp-for="Superpowers" id="Superpowers" name="Superpowers" value="@Model.Superpowers"></textarea>
+
+                            <button class="btn btn-success" type="submit">Save Changes</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
