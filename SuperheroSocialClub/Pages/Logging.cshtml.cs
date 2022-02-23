@@ -12,7 +12,7 @@ namespace SuperheroSocialClub.Pages
         [BindProperty]
         public string Password { get; set; }
 
-        public static User CurrentUser { get; set; }
+        public User CurrentUser { get; set; }
 
         public void OnGet(string message)
         {
@@ -28,7 +28,7 @@ namespace SuperheroSocialClub.Pages
                 {
                     CurrentUser = attemptLogin;
                     Response.Cookies.Append("User", $"{CurrentUser.Id}");
-                    return RedirectToPage("/Index", "Welcome");
+                    return RedirectToPage("/Index");
                 }
                 else
                 {
